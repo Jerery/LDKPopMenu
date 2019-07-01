@@ -1,0 +1,578 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EE824D4D22C98EAF00587BAC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EE824D4C22C98EAF00587BAC /* AppDelegate.m */; };
+		EE824D5022C98EAF00587BAC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE824D4F22C98EAF00587BAC /* ViewController.m */; };
+		EE824D5322C98EAF00587BAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE824D5122C98EAF00587BAC /* Main.storyboard */; };
+		EE824D5522C98EB000587BAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE824D5422C98EB000587BAC /* Assets.xcassets */; };
+		EE824D5822C98EB000587BAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE824D5622C98EB000587BAC /* LaunchScreen.storyboard */; };
+		EE824D5B22C98EB000587BAC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EE824D5A22C98EB000587BAC /* main.m */; };
+		EE824D6522C98EB000587BAC /* LDKPopMenuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EE824D6422C98EB000587BAC /* LDKPopMenuTests.m */; };
+		EE824D7022C98EB000587BAC /* LDKPopMenuUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = EE824D6F22C98EB000587BAC /* LDKPopMenuUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EE824D6122C98EB000587BAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE824D4022C98EAF00587BAC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EE824D4722C98EAF00587BAC;
+			remoteInfo = LDKPopMenu;
+		};
+		EE824D6C22C98EB000587BAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE824D4022C98EAF00587BAC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EE824D4722C98EAF00587BAC;
+			remoteInfo = LDKPopMenu;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EE824D4822C98EAF00587BAC /* LDKPopMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LDKPopMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE824D4B22C98EAF00587BAC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		EE824D4C22C98EAF00587BAC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		EE824D4E22C98EAF00587BAC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		EE824D4F22C98EAF00587BAC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		EE824D5222C98EAF00587BAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EE824D5422C98EB000587BAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EE824D5722C98EB000587BAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EE824D5922C98EB000587BAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE824D5A22C98EB000587BAC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EE824D6022C98EB000587BAC /* LDKPopMenuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LDKPopMenuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE824D6422C98EB000587BAC /* LDKPopMenuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LDKPopMenuTests.m; sourceTree = "<group>"; };
+		EE824D6622C98EB000587BAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE824D6B22C98EB000587BAC /* LDKPopMenuUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LDKPopMenuUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE824D6F22C98EB000587BAC /* LDKPopMenuUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LDKPopMenuUITests.m; sourceTree = "<group>"; };
+		EE824D7122C98EB000587BAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EE824D4522C98EAF00587BAC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE824D5D22C98EB000587BAC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE824D6822C98EB000587BAC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EE824D3F22C98EAF00587BAC = {
+			isa = PBXGroup;
+			children = (
+				EE824D4A22C98EAF00587BAC /* LDKPopMenu */,
+				EE824D6322C98EB000587BAC /* LDKPopMenuTests */,
+				EE824D6E22C98EB000587BAC /* LDKPopMenuUITests */,
+				EE824D4922C98EAF00587BAC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EE824D4922C98EAF00587BAC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EE824D4822C98EAF00587BAC /* LDKPopMenu.app */,
+				EE824D6022C98EB000587BAC /* LDKPopMenuTests.xctest */,
+				EE824D6B22C98EB000587BAC /* LDKPopMenuUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EE824D4A22C98EAF00587BAC /* LDKPopMenu */ = {
+			isa = PBXGroup;
+			children = (
+				EE824D4B22C98EAF00587BAC /* AppDelegate.h */,
+				EE824D4C22C98EAF00587BAC /* AppDelegate.m */,
+				EE824D4E22C98EAF00587BAC /* ViewController.h */,
+				EE824D4F22C98EAF00587BAC /* ViewController.m */,
+				EE824D5122C98EAF00587BAC /* Main.storyboard */,
+				EE824D5422C98EB000587BAC /* Assets.xcassets */,
+				EE824D5622C98EB000587BAC /* LaunchScreen.storyboard */,
+				EE824D5922C98EB000587BAC /* Info.plist */,
+				EE824D5A22C98EB000587BAC /* main.m */,
+			);
+			path = LDKPopMenu;
+			sourceTree = "<group>";
+		};
+		EE824D6322C98EB000587BAC /* LDKPopMenuTests */ = {
+			isa = PBXGroup;
+			children = (
+				EE824D6422C98EB000587BAC /* LDKPopMenuTests.m */,
+				EE824D6622C98EB000587BAC /* Info.plist */,
+			);
+			path = LDKPopMenuTests;
+			sourceTree = "<group>";
+		};
+		EE824D6E22C98EB000587BAC /* LDKPopMenuUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EE824D6F22C98EB000587BAC /* LDKPopMenuUITests.m */,
+				EE824D7122C98EB000587BAC /* Info.plist */,
+			);
+			path = LDKPopMenuUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EE824D4722C98EAF00587BAC /* LDKPopMenu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE824D7422C98EB000587BAC /* Build configuration list for PBXNativeTarget "LDKPopMenu" */;
+			buildPhases = (
+				EE824D4422C98EAF00587BAC /* Sources */,
+				EE824D4522C98EAF00587BAC /* Frameworks */,
+				EE824D4622C98EAF00587BAC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LDKPopMenu;
+			productName = LDKPopMenu;
+			productReference = EE824D4822C98EAF00587BAC /* LDKPopMenu.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EE824D5F22C98EB000587BAC /* LDKPopMenuTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE824D7722C98EB000587BAC /* Build configuration list for PBXNativeTarget "LDKPopMenuTests" */;
+			buildPhases = (
+				EE824D5C22C98EB000587BAC /* Sources */,
+				EE824D5D22C98EB000587BAC /* Frameworks */,
+				EE824D5E22C98EB000587BAC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EE824D6222C98EB000587BAC /* PBXTargetDependency */,
+			);
+			name = LDKPopMenuTests;
+			productName = LDKPopMenuTests;
+			productReference = EE824D6022C98EB000587BAC /* LDKPopMenuTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EE824D6A22C98EB000587BAC /* LDKPopMenuUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE824D7A22C98EB000587BAC /* Build configuration list for PBXNativeTarget "LDKPopMenuUITests" */;
+			buildPhases = (
+				EE824D6722C98EB000587BAC /* Sources */,
+				EE824D6822C98EB000587BAC /* Frameworks */,
+				EE824D6922C98EB000587BAC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EE824D6D22C98EB000587BAC /* PBXTargetDependency */,
+			);
+			name = LDKPopMenuUITests;
+			productName = LDKPopMenuUITests;
+			productReference = EE824D6B22C98EB000587BAC /* LDKPopMenuUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EE824D4022C98EAF00587BAC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = Jerery;
+				TargetAttributes = {
+					EE824D4722C98EAF00587BAC = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					EE824D5F22C98EB000587BAC = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = EE824D4722C98EAF00587BAC;
+					};
+					EE824D6A22C98EB000587BAC = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = EE824D4722C98EAF00587BAC;
+					};
+				};
+			};
+			buildConfigurationList = EE824D4322C98EAF00587BAC /* Build configuration list for PBXProject "LDKPopMenu" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EE824D3F22C98EAF00587BAC;
+			productRefGroup = EE824D4922C98EAF00587BAC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EE824D4722C98EAF00587BAC /* LDKPopMenu */,
+				EE824D5F22C98EB000587BAC /* LDKPopMenuTests */,
+				EE824D6A22C98EB000587BAC /* LDKPopMenuUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EE824D4622C98EAF00587BAC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE824D5822C98EB000587BAC /* LaunchScreen.storyboard in Resources */,
+				EE824D5522C98EB000587BAC /* Assets.xcassets in Resources */,
+				EE824D5322C98EAF00587BAC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE824D5E22C98EB000587BAC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE824D6922C98EB000587BAC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EE824D4422C98EAF00587BAC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE824D5022C98EAF00587BAC /* ViewController.m in Sources */,
+				EE824D5B22C98EB000587BAC /* main.m in Sources */,
+				EE824D4D22C98EAF00587BAC /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE824D5C22C98EB000587BAC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE824D6522C98EB000587BAC /* LDKPopMenuTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE824D6722C98EB000587BAC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE824D7022C98EB000587BAC /* LDKPopMenuUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EE824D6222C98EB000587BAC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EE824D4722C98EAF00587BAC /* LDKPopMenu */;
+			targetProxy = EE824D6122C98EB000587BAC /* PBXContainerItemProxy */;
+		};
+		EE824D6D22C98EB000587BAC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EE824D4722C98EAF00587BAC /* LDKPopMenu */;
+			targetProxy = EE824D6C22C98EB000587BAC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EE824D5122C98EAF00587BAC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EE824D5222C98EAF00587BAC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EE824D5622C98EB000587BAC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EE824D5722C98EB000587BAC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EE824D7222C98EB000587BAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		EE824D7322C98EB000587BAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EE824D7522C98EB000587BAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = LDKPopMenu/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Jerery.LDKPopMenu;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EE824D7622C98EB000587BAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = LDKPopMenu/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Jerery.LDKPopMenu;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EE824D7822C98EB000587BAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = LDKPopMenuTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Jerery.LDKPopMenuTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LDKPopMenu.app/LDKPopMenu";
+			};
+			name = Debug;
+		};
+		EE824D7922C98EB000587BAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = LDKPopMenuTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Jerery.LDKPopMenuTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LDKPopMenu.app/LDKPopMenu";
+			};
+			name = Release;
+		};
+		EE824D7B22C98EB000587BAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = LDKPopMenuUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Jerery.LDKPopMenuUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LDKPopMenu;
+			};
+			name = Debug;
+		};
+		EE824D7C22C98EB000587BAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = LDKPopMenuUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Jerery.LDKPopMenuUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LDKPopMenu;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EE824D4322C98EAF00587BAC /* Build configuration list for PBXProject "LDKPopMenu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE824D7222C98EB000587BAC /* Debug */,
+				EE824D7322C98EB000587BAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE824D7422C98EB000587BAC /* Build configuration list for PBXNativeTarget "LDKPopMenu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE824D7522C98EB000587BAC /* Debug */,
+				EE824D7622C98EB000587BAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE824D7722C98EB000587BAC /* Build configuration list for PBXNativeTarget "LDKPopMenuTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE824D7822C98EB000587BAC /* Debug */,
+				EE824D7922C98EB000587BAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE824D7A22C98EB000587BAC /* Build configuration list for PBXNativeTarget "LDKPopMenuUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE824D7B22C98EB000587BAC /* Debug */,
+				EE824D7C22C98EB000587BAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EE824D4022C98EAF00587BAC /* Project object */;
+}
