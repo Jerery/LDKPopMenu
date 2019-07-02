@@ -22,7 +22,8 @@
         _maxRow = 0;
         _hasArrow = YES;
         _positionType = LDKPopMenuPositionTypeTopLeft;
-        _isAnimated = NO;
+        _animatedType = LDKPopMenuAnimatedTypeScale;
+        _isAnimated = YES;
         _isShade = NO;
         _tableView = [[UITableView alloc] init];
         
@@ -61,21 +62,19 @@
 - (void)show {
     [self setupView];
     [self setupTableView];
-    [[UIApplication sharedApplication].keyWindow addSubview:self];
     
+    [[UIApplication sharedApplication].keyWindow addSubview:self];
     if (_isAnimated) {
-        CGFloat tableHeight = _items.count ? _items.count * _rowHeight : _rowHeight;
-        _tableView.frame = CGRectMake(self.origin.x - self.width/2,  self.origin.y + self.arrowHeight, _width, 0);
-//        _tableView.transform = CGAffineTransformMakeScale(0.2, 0.2);
-        [UIView animateWithDuration:0.2 animations:^{
-//            self.tableView.transform = CGAffineTransformIdentity;
-            self.tableView.frame = CGRectMake(self.origin.x - self.width/2, self.origin.y + self.arrowHeight, self.width, tableHeight);
-            self.tableView.alpha = 1.0;
-//            self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.2];
+        if (_animatedType == LDKPopMenuAnimatedTypeScale) {
+            _tableView.transform = CGAffineTransformMakeScale(0, 0);
+        }
+        else {
+            _tableView.transform = CGAffineTransformMakeScale(1, 0);
+        }
+        
+        [UIView animateWithDuration:0.1 animations:^{
+            self.tableView.transform = CGAffineTransformIdentity;
         } completion:nil];
-    }else{
-        self.tableView.alpha = 1.0;
-//        self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.2];
     }
 }
 
@@ -98,31 +97,34 @@
     
     if (_hasArrow) {
         [self p_addArrow];
-        
-        switch (_positionType) {
-            case LDKPopMenuPositionTypeTopLeft:
-            {
-                _tableView.layer.anchorPoint = CGPointMake(0, 0);
-                _tableView.layer.position = CGPointMake(_origin.x - _arrowWidth/2 - _arrowDistance, _arrowHeight);
-            }
-                break;
-                
-            case LDKPopMenuPositionTypeTopCenter:
-            {
-                _tableView.layer.anchorPoint = CGPointMake(0.5, 0);
-                _tableView.layer.position = CGPointMake(_origin.x, _origin.y + _arrowHeight);
-            }
-                break;
-                
-            default:
-                break;
-        }
     }
     else {
         _tableView.layer.position = CGPointMake(_origin.x, _origin.y);
     }
-    
-    
+        
+    switch (_positionType) {
+        case LDKPopMenuPositionTypeTopLeft:
+        {
+            _tableView.layer.anchorPoint = CGPointMake(0, 0);
+                
+            if (_hasArrow)
+                _tableView.layer.position = CGPointMake(_origin.x - _arrowWidth/2 - _arrowDistance, _origin.y + _arrowHeight);
+        }
+            break;
+                
+        case LDKPopMenuPositionTypeTopCenter:
+        {
+            _tableView.layer.anchorPoint = CGPointMake(0.5, 0);
+                
+            if (_hasArrow)
+                _tableView.layer.position = CGPointMake(_origin.x, _origin.y + _arrowHeight);
+        }
+            break;
+                
+        default:
+            break;
+    }
+
     [self addSubview:_tableView];
 }
 

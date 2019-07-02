@@ -44,6 +44,7 @@
     CGFloat screenWidth = UIScreen.mainScreen.bounds.size.width;
     LDKPopMenu *popMenu = [[LDKPopMenu alloc] initWithItems:nil positionType:LDKPopMenuPositionTypeTopLeft origin:CGPointMake(10+50/2, 100) action:nil];
     popMenu.menuColor = [UIColor grayColor];
+    popMenu.hasArrow = YES;
     [popMenu show];
 }
 
