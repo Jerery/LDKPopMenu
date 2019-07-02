@@ -10,12 +10,25 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef NS_ENUM(NSInteger, LDKPopMenuPositionType) {
-    LDKPopMenuPositionTypeTopLeft,
-    LDKPopMenuPositionTypeTopCenter,
-    LDKPopMenuPositionTypeTopRight,
-    LDKPopMenuPositionTypeBottomLeft,
-    LDKPopMenuPositionTypeBottomRight
+typedef NS_ENUM(NSInteger, LDKPopMenuArrowPositionVertical) {
+    LDKPopMenuArrowPositionVerticalTop = 1 << 4,
+    LDKPopMenuArrowPositionVerticalBottom = 1 << 3
+};
+
+typedef NS_ENUM(NSInteger, LDKPopMenuArrowPositionHorizon) {
+    LDKPopMenuArrowPositionHorizonLeft = 1 << 2,
+    LDKPopMenuArrowPositionHorizonCenter = 1 << 1,
+    LDKPopMenuArrowPositionHorizonRight = 1
+};
+
+typedef NS_ENUM(NSInteger, LDKPopMenuArrowPositionType) {
+    LDKPopMenuArrowPositionTypeNone = 0, // 没有箭头
+    LDKPopMenuArrowPositionTypeTopLeft = LDKPopMenuArrowPositionVerticalTop | LDKPopMenuArrowPositionHorizonLeft,
+    LDKPopMenuArrowPositionTypeTopCenter = LDKPopMenuArrowPositionVerticalTop | LDKPopMenuArrowPositionHorizonCenter,
+    LDKPopMenuArrowPositionTypeTopRight = LDKPopMenuArrowPositionVerticalTop | LDKPopMenuArrowPositionHorizonRight,
+    LDKPopMenuArrowPositionTypeBottomLeft = LDKPopMenuArrowPositionVerticalBottom | LDKPopMenuArrowPositionHorizonLeft,
+    LDKPopMenuArrowPositionTypeBottomCenter = LDKPopMenuArrowPositionVerticalBottom | LDKPopMenuArrowPositionHorizonCenter,
+    LDKPopMenuArrowPositionTypeBottomRight = LDKPopMenuArrowPositionVerticalBottom | LDKPopMenuArrowPositionHorizonRight
 };
 
 typedef NS_ENUM(NSInteger, LDKPopMenuAnimatedType) {
@@ -26,14 +39,6 @@ typedef NS_ENUM(NSInteger, LDKPopMenuAnimatedType) {
 @interface LDKPopMenu : UIView
 
 @property (nonatomic, copy, readonly) NSArray *items;
-
-/**
- 当 hasArrow = 1 时，表示箭头的位置，即 origin 点相对位于左上，中上还是右上等...
- 当 hasArrow = 0 时，表示 origin 点的位置，与 hasArrow = 1 类是。
- 
- default LDKPopMenuPositionTypeTopLeft
- */
-@property (nonatomic, assign) LDKPopMenuPositionType positionType;
 
 @property (nonatomic, assign) CGPoint origin;
 
@@ -55,16 +60,13 @@ typedef NS_ENUM(NSInteger, LDKPopMenuAnimatedType) {
 /**
  箭头距离边缘的距离
  
- 当 positonType = LDKPopMenuPositionTypeTopLeft 或 LDKPopMenuPositionTypeBottomLeft 时，指距离左边缘的距离
- 当 positonType = LDKPopMenuPositionTypeTopRight 或 LDKPopMenuPositionTypeBottomRight 时，指距离左边缘的距离
+ 当 positonType = LDKPopMenuArrowPositionTypeTopLeft 或 LDKPopMenuArrowPositionTypeBottomLeft 时，指距离左边缘的距离
+ 当 positonType = LDKPopMenuArrowPositionTypeTopRight 或 LDKPopMenuArrowPositionTypeBottomRight 时，指距离左边缘的距离
  default = 10
  */
 @property (nonatomic, assign) CGFloat arrowDistance;
 
 @property (nonatomic, assign) int maxRow;
-
-// 是否有箭头 default YES
-@property (nonatomic, assign) BOOL hasArrow;
 
 // tableView 的背景颜色包括 cell 的颜色 default white
 @property (nonatomic, strong, nullable) UIColor *menuColor;
@@ -84,9 +86,13 @@ typedef NS_ENUM(NSInteger, LDKPopMenuAnimatedType) {
 
 @property (nonatomic, strong, nullable) UITableView *tableView;
 
-- (instancetype)initWithItems:(NSArray<NSDictionary *> *__nullable)items positionType:(LDKPopMenuPositionType)positionType origin:(CGPoint)origin action:( void(^__nullable)(NSUInteger index))action;
+- (instancetype)initPopMenuWithArrow:(BOOL)hasArrow items:(NSArray<NSDictionary *> *__nullable)items positionType:(LDKPopMenuArrowPositionType)arrowPositionType origin:(CGPoint)origin action:(void(^__nullable)(NSUInteger index))action;
 
 - (void)show;
+
+- (instancetype) init __attribute__((unavailable("call initPopMenuWithArrow:items:positionType:origin:action: instead")));
+
+- (instancetype)initWithFrame:(CGRect)frame __attribute__((unavailable("call initPopMenuWithArrow:items:positionType:origin:action: instead")));
 
 @end
 

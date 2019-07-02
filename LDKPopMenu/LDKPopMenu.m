@@ -8,10 +8,28 @@
 
 #import "LDKPopMenu.h"
 
-@implementation LDKPopMenu
+@interface LDKPopMenu()
 
-- (instancetype)init {
+@property (nonatomic, strong, nonnull) UIView *menuView;
+
+@end
+
+@implementation LDKPopMenu {
+    
+    BOOL _hasArrow;
+    
+    /**
+     当 hasArrow = 1 时，表示箭头的位置，即 origin 点相对位于左上，中上还是右上等。default LDKPopMenuArrowPositionTypeTopCenter
+     当 hasArrow = 0 时，表示 origin 点的位置。default LDKPopMenuArrowPositionTypeNone
+     */
+    LDKPopMenuArrowPositionType _arrowPositionType;
+    
+//    UIView *_menuView;
+}
+
+- (instancetype)initPopMenuWithArrow:(BOOL)hasArrow items:(NSArray<NSDictionary *> *__nullable)items positionType:(LDKPopMenuArrowPositionType)arrowPositionType origin:(CGPoint)origin action:(void(^__nullable)(NSUInteger index))action {
     if (self = [super init]) {
+        // init
         _origin = CGPointZero;
         _width = 150.0;
         _rowHeight = 50.0;
@@ -20,25 +38,22 @@
         _arrowHeight = 8.0;
         _arrowDistance = 10.0;
         _maxRow = 0;
-        _hasArrow = YES;
-        _positionType = LDKPopMenuPositionTypeTopLeft;
         _animatedType = LDKPopMenuAnimatedTypeScale;
         _isAnimated = YES;
         _isShade = NO;
         _tableView = [[UITableView alloc] init];
         
+        _menuView = [[UIView alloc] init];
+        _menuView.backgroundColor = [UIColor colorWithWhite:1 alpha:0];
+        
         self.frame = CGRectMake(0, 0, UIScreen.mainScreen.bounds.size.width, UIScreen.mainScreen.bounds.size.height);
-    }
-    
-    return self;
-}
-
-- (instancetype)initWithItems:(NSArray<NSDictionary *> *__nullable)items positionType:(LDKPopMenuPositionType)positionType origin:(CGPoint)origin action:(void(^__nullable)(NSUInteger index))action {
-    if (self = [self init]) {
+        
+        // custom
+        _hasArrow = hasArrow;
         _items = items;
-        _positionType = positionType;
         _origin = origin;
         _action = action;
+        _arrowPositionType = arrowPositionType;
     }
     
     return self;
@@ -46,9 +61,8 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     if (_isAnimated) {
-        [UIView animateWithDuration:0.15 animations:^{
-            self.tableView.transform = CGAffineTransformMakeScale(0.3, 0.3);
-            self.tableView.alpha = 0.0;
+        [UIView animateWithDuration:0.3 animations:^{
+            self.menuView.transform = CGAffineTransformMakeScale(0, 0);
             self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0];
         } completion:^(BOOL finished) {
             [self removeFromSuperview];
@@ -61,19 +75,18 @@
 #pragma mark - api
 - (void)show {
     [self setupView];
-    [self setupTableView];
     
     [[UIApplication sharedApplication].keyWindow addSubview:self];
     if (_isAnimated) {
         if (_animatedType == LDKPopMenuAnimatedTypeScale) {
-            _tableView.transform = CGAffineTransformMakeScale(0, 0);
+            _menuView.transform = CGAffineTransformMakeScale(0, 0);
         }
         else {
-            _tableView.transform = CGAffineTransformMakeScale(1, 0);
+            _menuView.transform = CGAffineTransformMakeScale(1, 0);
         }
         
         [UIView animateWithDuration:0.1 animations:^{
-            self.tableView.transform = CGAffineTransformIdentity;
+            self.menuView.transform = CGAffineTransformIdentity;
         } completion:nil];
     }
 }
@@ -85,6 +98,86 @@
         self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
     else
         self.backgroundColor = [UIColor colorWithWhite:1 alpha:0];
+    
+    [self setupMenuView];
+    [self setupTableView];
+}
+
+- (void)setupMenuView {
+    _menuView.layer.cornerRadius = 4;
+    _menuView.layer.masksToBounds = YES;
+    
+    CGFloat tableHeight = _items.count ? _items.count * _rowHeight : _rowHeight;
+    
+    if (_hasArrow) {
+        _menuView.frame = CGRectMake(0, 0, _width, tableHeight + _arrowHeight);
+        [self p_addArrowToMenuView];
+    }
+    else {
+        _menuView.frame = CGRectMake(0, 0, _width, tableHeight);
+        _menuView.layer.position = CGPointMake(_origin.x, _origin.y);
+    }
+    
+    switch (_arrowPositionType) {
+        case LDKPopMenuArrowPositionTypeTopLeft:
+        {
+            _menuView.layer.anchorPoint = CGPointMake(0, 0);
+            
+            if (_hasArrow)
+                _menuView.layer.position = CGPointMake(_origin.x - _arrowWidth/2 - _arrowDistance, _origin.y);
+        }
+            break;
+            
+        case LDKPopMenuArrowPositionTypeTopCenter:
+        {
+            _menuView.layer.anchorPoint = CGPointMake(0.5, 0);
+            
+            if (_hasArrow)
+                _menuView.layer.position = CGPointMake(_origin.x, _origin.y);
+        }
+            break;
+            
+        case LDKPopMenuArrowPositionTypeTopRight:
+        {
+            _menuView.layer.anchorPoint = CGPointMake(1, 0);
+            
+            if (_hasArrow)
+                _menuView.layer.position = CGPointMake(_origin.x + _arrowWidth/2 + _arrowDistance, _origin.y);
+        }
+            break;
+            
+        case LDKPopMenuArrowPositionTypeBottomLeft:
+        {
+            _menuView.layer.anchorPoint = CGPointMake(0, 1);
+            
+            if (_hasArrow)
+                _menuView.layer.position = CGPointMake(_origin.x - _arrowWidth/2 - _arrowDistance, _origin.y);
+        }
+            break;
+            
+        case LDKPopMenuArrowPositionTypeBottomCenter:
+        {
+            _menuView.layer.anchorPoint = CGPointMake(0.5, 1);
+            
+            if (_hasArrow)
+                _menuView.layer.position = CGPointMake(_origin.x, _origin.y);
+        }
+            break;
+            
+        case LDKPopMenuArrowPositionTypeBottomRight:
+        {
+            _menuView.layer.anchorPoint = CGPointMake(1, 1);
+            
+            if (_hasArrow)
+                _menuView.layer.position = CGPointMake(_origin.x + _arrowWidth/2 + _arrowDistance, _origin.y);
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+    [self addSubview:_menuView];
 }
 
 - (void)setupTableView {
@@ -93,64 +186,85 @@
     _tableView.backgroundColor = _menuColor;
     
     CGFloat tableHeight = _items.count ? _items.count * _rowHeight : _rowHeight;
-    _tableView.frame = CGRectMake(0, 0, _width, tableHeight);
     
-    if (_hasArrow) {
-        [self p_addArrow];
+    if (_arrowPositionType & LDKPopMenuArrowPositionVerticalTop) {
+        if (_hasArrow)
+            _tableView.frame = CGRectMake(0, _arrowHeight, _width, tableHeight);
+        else
+            _tableView.frame = CGRectMake(0, 0, _width, tableHeight);
     }
-    else {
-        _tableView.layer.position = CGPointMake(_origin.x, _origin.y);
-    }
-        
-    switch (_positionType) {
-        case LDKPopMenuPositionTypeTopLeft:
-        {
-            _tableView.layer.anchorPoint = CGPointMake(0, 0);
-                
-            if (_hasArrow)
-                _tableView.layer.position = CGPointMake(_origin.x - _arrowWidth/2 - _arrowDistance, _origin.y + _arrowHeight);
-        }
-            break;
-                
-        case LDKPopMenuPositionTypeTopCenter:
-        {
-            _tableView.layer.anchorPoint = CGPointMake(0.5, 0);
-                
-            if (_hasArrow)
-                _tableView.layer.position = CGPointMake(_origin.x, _origin.y + _arrowHeight);
-        }
-            break;
-                
-        default:
-            break;
-    }
+    else
+        _tableView.frame = CGRectMake(0, 0, _width, tableHeight);
 
-    [self addSubview:_tableView];
+    [_menuView addSubview:_tableView];
 }
 
 #pragma mark - private methods
-- (void)p_addArrow {
-    CGPoint peak = _origin;
+- (void)p_addArrowToMenuView {
+    CGFloat tableHeight = _items.count ? _items.count * _rowHeight : _rowHeight;
+    CGFloat menuHeight = tableHeight + _arrowHeight;
+    
+    CGPoint peak = CGPointZero;
     CGPoint start = CGPointZero;
     CGPoint end = CGPointZero;
     
-    if (_positionType == LDKPopMenuPositionTypeTopLeft ||
-        _positionType == LDKPopMenuPositionTypeTopCenter ||
-        _positionType == LDKPopMenuPositionTypeTopRight) {
-        start = CGPointMake(peak.x - _arrowWidth/2, peak.y + _arrowHeight);
-        end = CGPointMake(start.x + _arrowWidth, start.y);
-    }
-    else {
-        
+    switch (_arrowPositionType) {
+        case LDKPopMenuArrowPositionTypeTopLeft:
+        {
+            peak = CGPointMake(_arrowDistance + _arrowWidth/2, 0);
+        }
+            break;
+            
+        case LDKPopMenuArrowPositionTypeTopCenter:
+        {
+            peak = CGPointMake(_width/2, 0);
+        }
+            break;
+            
+        case LDKPopMenuArrowPositionTypeTopRight:
+        {
+            peak = CGPointMake(_width - _arrowDistance - _arrowWidth/2, 0);
+        }
+            break;
+            
+        case LDKPopMenuArrowPositionTypeBottomLeft:
+        {
+            peak = CGPointMake(_arrowDistance + _arrowWidth/2, menuHeight);
+        }
+            break;
+            
+        case LDKPopMenuArrowPositionTypeBottomCenter:
+        {
+            peak = CGPointMake(_width/2, menuHeight);
+        }
+            break;
+            
+        case LDKPopMenuArrowPositionTypeBottomRight:
+        {
+            peak = CGPointMake(_width - _arrowDistance - _arrowWidth/2, menuHeight);
+        }
+            break;
+            
+        default:
+            break;
     }
     
-    [self p_drawArrow:peak start:start end:end];
+    if (_arrowPositionType & LDKPopMenuArrowPositionVerticalTop) {
+        start = CGPointMake(peak.x - _arrowWidth/2, _arrowHeight);
+        end = CGPointMake(start.x + _arrowWidth, _arrowHeight);
+    }
+    else {
+        start = CGPointMake(peak.x - _arrowWidth/2, peak.y - _arrowHeight);
+        end = CGPointMake(start.x + _arrowWidth, peak.y - _arrowHeight);
+    }
+    
+    [self p_drawArrowOnView:_menuView peak:peak start:start end:end];
 }
 
-- (void)p_drawArrow:(CGPoint)peak start:(CGPoint)start end:(CGPoint)end {
+- (void)p_drawArrowOnView:(UIView *)view peak:(CGPoint)peak start:(CGPoint)start end:(CGPoint)end {
     CAShapeLayer *arrowLayer = [[CAShapeLayer alloc] init];
     UIBezierPath *path = [[UIBezierPath alloc] init];
-    arrowLayer.fillColor = self.tableView.backgroundColor.CGColor;
+    arrowLayer.fillColor = _menuColor.CGColor;
     
     //path移动到开始画图的位置
     [path moveToPoint:start];
@@ -160,7 +274,7 @@
     
     //关闭path
     [path closePath];
-    [self.layer addSublayer:arrowLayer];
+    [view.layer addSublayer:arrowLayer];
 }
 
 
