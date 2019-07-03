@@ -14,18 +14,7 @@
 
 @end
 
-@implementation LDKPopMenu {
-    
-    BOOL _hasArrow;
-    
-    /**
-     当 hasArrow = 1 时，表示箭头的位置，即 origin 点相对位于左上，中上还是右上等。default LDKPopMenuPositionTypeTopCenter
-     当 hasArrow = 0 时，表示 origin 点的位置。default LDKPopMenuPositionTypeNone
-     */
-    LDKPopMenuPositionType _positionType;
-    
-//    UIView *_menuView;
-}
+@implementation LDKPopMenu
 
 - (instancetype)initPopMenuWithArrow:(BOOL)hasArrow items:(NSArray<NSDictionary *> *__nullable)items positionType:(LDKPopMenuPositionType)positionType origin:(CGPoint)origin action:(void(^__nullable)(NSUInteger index))action {
     if (self = [super init]) {
@@ -73,6 +62,13 @@
 }
 
 #pragma mark - api
+
++ (void)showPopMenuWithPopMenuWithArrow:(BOOL)hasArrow items:(NSArray<NSDictionary *> *__nullable)items positionType:(LDKPopMenuPositionType)positionType origin:(CGPoint)origin action:(void(^__nullable)(NSUInteger index))action {
+    
+    LDKPopMenu *popMenu = [[LDKPopMenu alloc] initPopMenuWithArrow:hasArrow items:items positionType:positionType origin:origin action:action];
+    [popMenu show];
+}
+
 - (void)show {
     [self setupView];
     

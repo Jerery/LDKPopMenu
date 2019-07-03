@@ -38,6 +38,14 @@ typedef NS_ENUM(NSInteger, LDKPopMenuAnimatedType) {
 
 @interface LDKPopMenu : UIView
 
+@property (nonatomic, assign) BOOL hasArrow;
+
+/**
+ 当 hasArrow = 1 时，表示箭头的位置，即 origin 点相对位于左上，中上还是右上等。default LDKPopMenuPositionTypeTopCenter
+ 当 hasArrow = 0 时，表示 origin 点的位置。default LDKPopMenuPositionTypeNone
+ */
+@property (nonatomic, assign) LDKPopMenuPositionType positionType;
+
 @property (nonatomic, copy, readonly) NSArray *items;
 
 @property (nonatomic, assign) CGPoint origin;
@@ -90,6 +98,17 @@ typedef NS_ENUM(NSInteger, LDKPopMenuAnimatedType) {
 @property (nonatomic, copy) void (^action)(NSUInteger index);
 
 @property (nonatomic, strong, nullable) UITableView *tableView;
+
+/**
+ 直接显示一个 PopMenu
+ 
+ @param hasArrow 是否有箭头
+ @param items tableView显示的内容
+ @param positionType origin 的位置
+ @param origin 有箭头时是箭头的位置，没有箭头的时候是 anchorPoint 的位置
+ @param action 点击菜单每一项的回掉
+ */
++ (void)showPopMenuWithPopMenuWithArrow:(BOOL)hasArrow items:(NSArray<NSDictionary *> *__nullable)items positionType:(LDKPopMenuPositionType)positionType origin:(CGPoint)origin action:(void(^__nullable)(NSUInteger index))action;
 
 /**
  @param hasArrow 是否有箭头
