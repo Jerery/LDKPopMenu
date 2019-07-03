@@ -19,15 +19,15 @@
     BOOL _hasArrow;
     
     /**
-     当 hasArrow = 1 时，表示箭头的位置，即 origin 点相对位于左上，中上还是右上等。default LDKPopMenuArrowPositionTypeTopCenter
-     当 hasArrow = 0 时，表示 origin 点的位置。default LDKPopMenuArrowPositionTypeNone
+     当 hasArrow = 1 时，表示箭头的位置，即 origin 点相对位于左上，中上还是右上等。default LDKPopMenuPositionTypeTopCenter
+     当 hasArrow = 0 时，表示 origin 点的位置。default LDKPopMenuPositionTypeNone
      */
-    LDKPopMenuArrowPositionType _arrowPositionType;
+    LDKPopMenuPositionType _positionType;
     
 //    UIView *_menuView;
 }
 
-- (instancetype)initPopMenuWithArrow:(BOOL)hasArrow items:(NSArray<NSDictionary *> *__nullable)items positionType:(LDKPopMenuArrowPositionType)arrowPositionType origin:(CGPoint)origin action:(void(^__nullable)(NSUInteger index))action {
+- (instancetype)initPopMenuWithArrow:(BOOL)hasArrow items:(NSArray<NSDictionary *> *__nullable)items positionType:(LDKPopMenuPositionType)positionType origin:(CGPoint)origin action:(void(^__nullable)(NSUInteger index))action {
     if (self = [super init]) {
         // init
         _origin = CGPointZero;
@@ -53,7 +53,7 @@
         _items = items;
         _origin = origin;
         _action = action;
-        _arrowPositionType = arrowPositionType;
+        _positionType = positionType;
     }
     
     return self;
@@ -118,8 +118,8 @@
         _menuView.layer.position = CGPointMake(_origin.x, _origin.y);
     }
     
-    switch (_arrowPositionType) {
-        case LDKPopMenuArrowPositionTypeTopLeft:
+    switch (_positionType) {
+        case LDKPopMenuPositionTypeTopLeft:
         {
             _menuView.layer.anchorPoint = CGPointMake(0, 0);
             
@@ -128,7 +128,7 @@
         }
             break;
             
-        case LDKPopMenuArrowPositionTypeTopCenter:
+        case LDKPopMenuPositionTypeTopCenter:
         {
             _menuView.layer.anchorPoint = CGPointMake(0.5, 0);
             
@@ -137,7 +137,7 @@
         }
             break;
             
-        case LDKPopMenuArrowPositionTypeTopRight:
+        case LDKPopMenuPositionTypeTopRight:
         {
             _menuView.layer.anchorPoint = CGPointMake(1, 0);
             
@@ -146,7 +146,7 @@
         }
             break;
             
-        case LDKPopMenuArrowPositionTypeBottomLeft:
+        case LDKPopMenuPositionTypeBottomLeft:
         {
             _menuView.layer.anchorPoint = CGPointMake(0, 1);
             
@@ -155,7 +155,7 @@
         }
             break;
             
-        case LDKPopMenuArrowPositionTypeBottomCenter:
+        case LDKPopMenuPositionTypeBottomCenter:
         {
             _menuView.layer.anchorPoint = CGPointMake(0.5, 1);
             
@@ -164,7 +164,7 @@
         }
             break;
             
-        case LDKPopMenuArrowPositionTypeBottomRight:
+        case LDKPopMenuPositionTypeBottomRight:
         {
             _menuView.layer.anchorPoint = CGPointMake(1, 1);
             
@@ -187,7 +187,7 @@
     
     CGFloat tableHeight = _items.count ? _items.count * _rowHeight : _rowHeight;
     
-    if (_arrowPositionType & LDKPopMenuArrowPositionVerticalTop) {
+    if (_positionType & LDKPopMenuPositionVerticalTop) {
         if (_hasArrow)
             _tableView.frame = CGRectMake(0, _arrowHeight, _width, tableHeight);
         else
@@ -208,38 +208,38 @@
     CGPoint start = CGPointZero;
     CGPoint end = CGPointZero;
     
-    switch (_arrowPositionType) {
-        case LDKPopMenuArrowPositionTypeTopLeft:
+    switch (_positionType) {
+        case LDKPopMenuPositionTypeTopLeft:
         {
             peak = CGPointMake(_arrowDistance + _arrowWidth/2, 0);
         }
             break;
             
-        case LDKPopMenuArrowPositionTypeTopCenter:
+        case LDKPopMenuPositionTypeTopCenter:
         {
             peak = CGPointMake(_width/2, 0);
         }
             break;
             
-        case LDKPopMenuArrowPositionTypeTopRight:
+        case LDKPopMenuPositionTypeTopRight:
         {
             peak = CGPointMake(_width - _arrowDistance - _arrowWidth/2, 0);
         }
             break;
             
-        case LDKPopMenuArrowPositionTypeBottomLeft:
+        case LDKPopMenuPositionTypeBottomLeft:
         {
             peak = CGPointMake(_arrowDistance + _arrowWidth/2, menuHeight);
         }
             break;
             
-        case LDKPopMenuArrowPositionTypeBottomCenter:
+        case LDKPopMenuPositionTypeBottomCenter:
         {
             peak = CGPointMake(_width/2, menuHeight);
         }
             break;
             
-        case LDKPopMenuArrowPositionTypeBottomRight:
+        case LDKPopMenuPositionTypeBottomRight:
         {
             peak = CGPointMake(_width - _arrowDistance - _arrowWidth/2, menuHeight);
         }
@@ -249,7 +249,7 @@
             break;
     }
     
-    if (_arrowPositionType & LDKPopMenuArrowPositionVerticalTop) {
+    if (_positionType & LDKPopMenuPositionVerticalTop) {
         start = CGPointMake(peak.x - _arrowWidth/2, _arrowHeight);
         end = CGPointMake(start.x + _arrowWidth, _arrowHeight);
     }

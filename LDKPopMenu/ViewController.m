@@ -65,28 +65,28 @@
 }
 
 - (void)leftTopButtonClick:(UIButton *)sender {
-    LDKPopMenu *popMenu = [[LDKPopMenu alloc] initPopMenuWithArrow:NO items:nil positionType:LDKPopMenuArrowPositionTypeTopLeft origin:CGPointMake(10+50/2, 100) action:nil];
+    LDKPopMenu *popMenu = [[LDKPopMenu alloc] initPopMenuWithArrow:NO items:nil positionType:LDKPopMenuPositionTypeTopLeft origin:CGPointMake(10+50/2, 100) action:nil];
     popMenu.menuColor = [UIColor grayColor];
     [popMenu show];
 }
 
 - (void)topCenterButtonClick:(UIButton *)sender {
     CGFloat screenWidth = UIScreen.mainScreen.bounds.size.width;
-    LDKPopMenu *popMenu = [[LDKPopMenu alloc] initPopMenuWithArrow:NO items:nil positionType:LDKPopMenuArrowPositionTypeTopCenter origin:CGPointMake(screenWidth/2, 100) action:nil];
+    LDKPopMenu *popMenu = [[LDKPopMenu alloc] initPopMenuWithArrow:NO items:nil positionType:LDKPopMenuPositionTypeTopCenter origin:CGPointMake(screenWidth/2, 100) action:nil];
     popMenu.menuColor = [UIColor blackColor];
     [popMenu show];
 }
 
 - (void)rightTopButtonClick:(UIButton *)sender {
     CGFloat screenWidth = UIScreen.mainScreen.bounds.size.width;
-    LDKPopMenu *popMenu = [[LDKPopMenu alloc] initPopMenuWithArrow:NO items:nil positionType:LDKPopMenuArrowPositionTypeTopRight origin:CGPointMake(screenWidth - 10 - 25, 100) action:nil];
+    LDKPopMenu *popMenu = [[LDKPopMenu alloc] initPopMenuWithArrow:NO items:nil positionType:LDKPopMenuPositionTypeTopRight origin:CGPointMake(screenWidth - 10 - 25, 100) action:nil];
     popMenu.menuColor = [UIColor blueColor];
     [popMenu show];
 }
 
 - (void)leftBottomButtonClick:(UIButton *)sender {
     CGFloat screenHeight = UIScreen.mainScreen.bounds.size.height;
-    LDKPopMenu *popMenu = [[LDKPopMenu alloc] initPopMenuWithArrow:NO items:nil positionType:LDKPopMenuArrowPositionTypeBottomLeft origin:CGPointMake(10+50/2, screenHeight - 150) action:nil];
+    LDKPopMenu *popMenu = [[LDKPopMenu alloc] initPopMenuWithArrow:NO items:nil positionType:LDKPopMenuPositionTypeBottomLeft origin:CGPointMake(10+50/2, screenHeight - 150) action:nil];
     popMenu.menuColor = [UIColor redColor];
     [popMenu show];
 }
@@ -94,7 +94,7 @@
 - (void)bottomCenterButtonClick:(UIButton *)sender {
     CGFloat screenWidth = UIScreen.mainScreen.bounds.size.width;
     CGFloat screenHeight = UIScreen.mainScreen.bounds.size.height;
-    LDKPopMenu *popMenu = [[LDKPopMenu alloc] initPopMenuWithArrow:NO items:nil positionType:LDKPopMenuArrowPositionTypeBottomCenter origin:CGPointMake(screenWidth/2, screenHeight - 150) action:nil];
+    LDKPopMenu *popMenu = [[LDKPopMenu alloc] initPopMenuWithArrow:NO items:nil positionType:LDKPopMenuPositionTypeBottomCenter origin:CGPointMake(screenWidth/2, screenHeight - 150) action:nil];
     popMenu.menuColor = [UIColor orangeColor];
     [popMenu show];
 }
@@ -102,7 +102,7 @@
 - (void)rightBottomButtonClick:(UIButton *)sender {
     CGFloat screenWidth = UIScreen.mainScreen.bounds.size.width;
     CGFloat screenHeight = UIScreen.mainScreen.bounds.size.height;
-    LDKPopMenu *popMenu = [[LDKPopMenu alloc] initPopMenuWithArrow:NO items:nil positionType:LDKPopMenuArrowPositionTypeBottomRight origin:CGPointMake(screenWidth - 10 - 25, screenHeight - 150) action:nil];
+    LDKPopMenu *popMenu = [[LDKPopMenu alloc] initPopMenuWithArrow:NO items:nil positionType:LDKPopMenuPositionTypeBottomRight origin:CGPointMake(screenWidth - 10 - 25, screenHeight - 150) action:nil];
     popMenu.menuColor = [UIColor purpleColor];
     [popMenu show];
 }
